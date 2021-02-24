@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  emis: 
+  center_ni: 
+  name: MyString
+
+two:
+  emis: 
+  center_ni: 
+  name: MyString
