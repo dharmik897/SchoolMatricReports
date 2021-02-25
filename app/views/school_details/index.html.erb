@@ -1,1 +1,1 @@
-<%= bar_chart SchoolDetail.group(:name).count %>
+<%= line_chart @schools.joins(:matrics_details).pluck(:wrote, :passed), xtitle: 'School wise attendees and passed' %>

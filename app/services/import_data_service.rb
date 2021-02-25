@@ -3,7 +3,8 @@
 require 'csv'
 
 class ImportDataService
-  def initialize(file)
+  def initialize
+    file = File.open('public/2016_Matric_Schools_Report.csv')
     @file = file
   end
 
