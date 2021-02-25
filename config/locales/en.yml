@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  school_specific: 'School specific yearly data of the students.'
+  compare_schools: 'Compare Passed students between 2 schools'
+  school_wise_attendees: 'School wise attendees and passed'

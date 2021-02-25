@@ -1,1 +1,42 @@
-<%= line_chart @schools.joins(:matrics_details).pluck(:wrote, :passed), xtitle: 'School wise attendees and passed' %>
+<%= line_chart @schools.joins(:matrics_details).pluck(:wrote, :passed), xtitle: t('school_wise_attendees'), id: 'all_chart' %>
+
+<h3><%= t('school_specific') %></h3>
+
+<%= select_tag "name", options_from_collection_for_select(SchoolDetail.all, 'id', 'name'), id: 'select_school' %>
+<div id='selected_school_details'>
+</div>
+
+<h3> <%= t('compare_schools')%></h3>
+
+<%= select_tag "school_1", options_from_collection_for_select(SchoolDetail.all, 'id', 'name'), id: 'first_school' %>
+<%= select_tag "school_2", options_from_collection_for_select(SchoolDetail.all, 'id', 'name'), id: 'second_school' %>
+<div id='compare_schools'>
+</div>
+
+<script type='text/javascript'>
+  $('#select_school').on('change', function (){
+    var school_id = $(this).val();
+    $.ajax({
+      type: 'GET',
+      url: '/school_details/' + school_id + '/year_and_school',
+      dataType: 'script',
+      data: {
+        id: school_id
+      }
+    });
+  });
+
+  $('#second_school, #first_school').on('change', function (){
+    var school_one_id = $('#first_school').val();
+    var school_second_id = $('#second_school').val();
+    $.ajax({
+      type: 'GET',
+      url: '/school_details/' + school_one_id + '/compare_schools',
+      dataType: 'script',
+      data: {
+        school_one: school_one_id,
+        school_two: school_second_id
+      }
+    });
+  });
+</script>

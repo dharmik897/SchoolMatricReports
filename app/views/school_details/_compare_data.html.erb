@@ -1,0 +1,5 @@
+<%= column_chart [
+{ name: "Passed", data: school1.matrics_details.group(:year).sum(:passed) },
+{ name: "Passed", data: school2.matrics_details.group(:year).sum(:passed) }
+], { id: 'column_chart_x' }
+ %>
